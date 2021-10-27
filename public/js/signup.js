@@ -1,3 +1,5 @@
+// handles when a user signs up for the first time
+
 const signupFormHandler = async function(event) {
     event.preventDefault();
   

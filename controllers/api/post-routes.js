@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../../models/');
 const withAuth = require('../../utils/auth');
-
+// function for putting a new post into the database
 router.post('/', withAuth, async (req, res) => {
   const body = req.body;
 
@@ -12,7 +12,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// used to update posts
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const [affectedRows] = await Post.update(req.body, {
@@ -30,7 +30,7 @@ router.put('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// used to delete posts
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const [affectedRows] = Post.destroy({

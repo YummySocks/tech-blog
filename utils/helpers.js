@@ -1,3 +1,5 @@
+// middleware for generating the date a post/comment was made at
+
 module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();

@@ -1,3 +1,5 @@
+// handles when a user tries to log in 
+
 const loginFormHandler = async function(event) {
     event.preventDefault();
   

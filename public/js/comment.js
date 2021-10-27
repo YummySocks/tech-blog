@@ -1,3 +1,4 @@
+// function for posting a comment to the database on button push
 const commentFormHandler = async function(event) {
   event.preventDefault();
 

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../models');
 const withAuth = require('../utils/auth');
-
+// get request that first checks if user is signed in and pulls the posts that are in the database
 router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -9,9 +9,9 @@ router.get('/', withAuth, async (req, res) => {
         userId: req.session.userId,
       },
     });
-
+    // serializes the data by mapping through it 
     const posts = postData.map((post) => post.get({ plain: true }));
-
+    // sends the data to the admin posts handlebars file
     res.render('admin-posts', {
       layout: 'landing',
       posts,
@@ -20,13 +20,13 @@ router.get('/', withAuth, async (req, res) => {
     res.redirect('login');
   }
 });
-
+// gets the route to display the form for making a new post
 router.get('/new', withAuth, (req, res) => {
   res.render('new', {
     layout: 'landing',
   });
 });
-
+// get request to grab the edit form 
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);

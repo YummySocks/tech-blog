@@ -1,5 +1,5 @@
 const postId = document.querySelector('input[name="post-id"]').value;
-
+// function for editing a comment in the database
 const editHandle = async function(event) {
   event.preventDefault();
 
@@ -19,7 +19,7 @@ const editHandle = async function(event) {
 
   document.location.replace('/landing');
 };
-
+// function for deleting a post
 const deleteHandle = async function() {
   await fetch(`/api/post/${postId}`, {
     method: 'DELETE'
